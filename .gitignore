@@ -1,0 +1,7 @@
+# ignore executables #
+btest
+fshow
+ishow
+
+# OS generated files #
+.DS_Store

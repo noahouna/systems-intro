@@ -153,7 +153,6 @@ int bitXor(int x, int y) {
  *   Rating: 1
  */
 int tmin(void) {
-
   return (1<<31);
 
 }
@@ -166,7 +165,9 @@ int tmin(void) {
  *   Rating: 1
  */
 int isTmax(int x) {
-  return 2;
+  int T_MAX = ~(1<<31);
+  int T_MAX_XOR_X = T_MAX ^ x; // A XOR B = 0 iff A = B.
+  return !T_MAX_XOR_X; // Apply logical NOT to return 1 if x = T_MAX and 0 otherwise
 }
 /* 
  * allOddBits - return 1 if all odd-numbered bits in word set to 1

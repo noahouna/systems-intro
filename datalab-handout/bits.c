@@ -165,9 +165,11 @@ int tmin(void) {
  *   Rating: 1
  */
 int isTmax(int x) {
-  int T_MAX = ~(1<<31);
-  int T_MAX_XOR_X = T_MAX ^ x; // A XOR B = 0 iff A = B.
-  return !T_MAX_XOR_X; // Apply logical NOT to return 1 if x = T_MAX and 0 otherwise
+  int x_Plus_Two = x + 2; // if x is Tmax or -1, then x + 2 is -Tmax or 1 respectively
+  int sumIsZero = !(x + x_Plus_Two); // if x is Tmax or -1, then sumIsZero is 1/true
+  // Since this test also passes for x = -1, test to see if x = -1
+  int isNegativeOne = !(x + 1); // Evals to 1 if x = -1
+  return sumIsZero ^ isNegativeOne; // return 1 only if sumIsZero is true while isNegativeOne is false. The other way around will never happen.
 }
 /* 
  * allOddBits - return 1 if all odd-numbered bits in word set to 1
@@ -188,7 +190,7 @@ int allOddBits(int x) {
  *   Rating: 2
  */
 int negate(int x) {
-  return 2;
+  return (~x + 1);
 }
 //3
 /* 

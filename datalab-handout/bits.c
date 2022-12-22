@@ -180,7 +180,11 @@ int isTmax(int x) {
  *   Rating: 2
  */
 int allOddBits(int x) {
-  return 2;
+  // Create bit mask xAAAAAAAA
+  int halfBitMask = (0xAA << 8) | 0xAA;
+  int bitMask = (halfBitMask << 16) | halfBitMask;
+  
+  return !((x & bitMask) ^ bitMask);
 }
 /* 
  * negate - return -x 
